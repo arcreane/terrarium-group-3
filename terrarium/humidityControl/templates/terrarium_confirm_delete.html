@@ -1,0 +1,14 @@
+{% extends "base-generic.html" %}
+
+{% block content %}
+
+    <h1>Supprimer Terrarium</h1>
+
+    <p>Etes-vous sûr de couloir supprimer ce Terrarium : {{ terrarium }} ?</p>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <input type="submit" action="" value="Oui, supprimer."/>
+    </form>
+
+{% endblock %}

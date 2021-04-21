@@ -1,0 +1,17 @@
+{% extends "base-generic.html" %}
+
+{% block content %}
+    <h1>Listes Terrariums</h1>
+    {% if terrarium_list %}
+        <ul>
+            {% for terrarium in terrarium_list %}
+                <li>
+                    <a href="{{ terrarium.get_absolute_url }}">{{ terrarium.nickname }}</a> ({{ terrarium.animal }})
+
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Aucun Terrarium enregistré.</p>
+    {% endif %}
+{% endblock %}

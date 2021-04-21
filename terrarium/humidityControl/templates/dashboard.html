@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+</head>
+<body>
+
+{% extends "base-generic.html" %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <p><a href="{% url 'logout' %}">Déconnexion</a></p>
+        <h1> Bonjour {{ user.username }}, voici votre Dashboard</h1>
+
+
+        <h2>Vos Terrariums</h2>
+        {% if terrarium_list %}
+            {% for terrarium in terrarium_list %}
+                {% if terrarium.owner ==  user.username %}
+
+                    <h3>Terrarium : {{ terrarium.nickname }}</h3>
+                    <p><strong>Animal :</strong> {{ terrarium.animal }}</p>
+                    <p><strong>Climate :</strong> {{ terrarium.climate }}</p>
+                    <p><strong>Humidité Minimale :</strong> {{ terrarium.minHumidity }}</p>
+                    <p><strong>Humidité Maximale :</strong> {{ terrarium.maxHumidity }}</p>
+                    <p><strong>Humidité Actuelle :</strong> {{ terrarium.currentHumidity }}</p>
+
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            <p>Aucun Terrarium enregistré.</p>
+        {% endif %}
+        <h4><a href="{% url 'terrarium_create' %}">Ajouter un nouveau Terrarium</a></h4>
+
+    {% else %}
+        <p>Veuillez vous connecter.</p>
+        <a href="{% url 'login' %}">Connexion</a>
+    {% endif %}
+
+{% endblock %}
+
+</body>
+</html>

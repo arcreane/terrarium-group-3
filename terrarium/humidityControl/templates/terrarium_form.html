@@ -1,0 +1,14 @@
+{% extends "base-generic.html" %}
+
+{% block content %}
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <table>
+            {{ terrarium.owner|default:user.username }}
+            {{ form.as_table }}
+        </table>
+        <input type="submit" value="Submit"/>
+
+    </form>
+{% endblock %}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homepage Terrarium Groupe 3</title>
+</head>
+<body>
+
+{% extends "base-generic.html" %}
+
+{% block content %}
+
+    <h1>Homepage Terrarium Groupe 3</h1>
+    <p>Site web du projet Terrarium du groupe 3.</p>
+    <p>Victor, Gautier et Thomas sont heureux de vous présenter leur projet !</p>
+
+    {% if user.is_authenticated %}
+        <p><a href="{% url 'logout' %}">Déconnexion</a></p>
+    {% else %}
+        <p>Connectez-vous pour accéder aux fonctionnalités.</p>
+        <a href="{% url 'login' %}">Connexion</a>
+    {% endif %}
+
+
+{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+{% extends "base-generic.html" %}
+
+{% block content %}
+    <h1>Terrarium : {{ terrarium.nickname }}</h1>
+
+    <p><strong>Animal :</strong> {{ terrarium.animal }}</p>
+    <p><strong>Climate :</strong> {{ terrarium.climate }}</p>
+    <p><strong>Humidité Minimale :</strong> {{ terrarium.minHumidity }}</p>
+    <p><strong>Humidité Maximale :</strong> {{ terrarium.maxHumidity }}</p>
+    <p><strong>Humidité Actuelle :</strong> {{ terrarium.currentHumidity }}</p>
+
+
+{% endblock %}
