@@ -6,31 +6,14 @@ class Terrarium(models.Model):
     owner = models.CharField(max_length=30, default='test')
     nickname = models.CharField(max_length=30)
     animal = models.ForeignKey('AnimalToHumidity', on_delete=models.SET_NULL, null=True)
-    CLIMATE_PRESETS = (
-        ('0', 'NA'),
-        ('1', 'Desert'),
-        ('2', 'Temperate'),
-        ('3', 'Tropical / Semi-Aquatic')
-    )
-
-    climate = models.CharField(
-        max_length=1,
-        choices=CLIMATE_PRESETS,
-        blank=True,
-        default='0',
-    )
-    minHumidity = models.IntegerField(default='')
-    maxHumidity = models.IntegerField(default='')
     currentHumidity = models.IntegerField(default='0')
+    setHumidity = models.IntegerField(default='0')
 
     def __str__(self):
         return self.nickname
 
     def get_absolute_url(self):
         return reverse('terrarium_detail', args=[str(self.id)])
-
-
-
 
 
 class Owner(models.Model):
@@ -106,3 +89,6 @@ class AnimalToHumidity(models.Model):
 
     class Meta:
         ordering = ['specie']
+
+
+
